@@ -1,6 +1,7 @@
 package com.example.anaworld.mifclucknowid;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         etqr3 = (EditText) findViewById(R.id.etqr3);
         btn = (Button) findViewById(R.id.btn);
 
-        try {
+       try {
             FileInputStream fin = openFileInput("det.txt");
             int c;
             String temp="";
@@ -70,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+        File file = new File( "det.txt");
+
+
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         enc = enc + ":" + Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
                         try {
-                            FileOutputStream fOut = openFileOutput("det.txt",MODE_WORLD_READABLE);
+                            FileOutputStream fOut = openFileOutput("det.txt", Context.MODE_PRIVATE);
                             String str = etqr.getText().toString()+":"+etqr2.getText().toString();
                             fOut.write(str.getBytes());
                             fOut.close();
