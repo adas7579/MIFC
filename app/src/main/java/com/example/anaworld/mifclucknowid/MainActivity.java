@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
 
-                        enc = enc + ":" + Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                        enc = "mifc:"+enc + ":" + Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
                         try {
                             FileOutputStream fOut = openFileOutput("det.txt", Context.MODE_PRIVATE);
